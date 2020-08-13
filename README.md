@@ -1,43 +1,79 @@
-# ARK Core
+# TGIC-core
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/ARKEcosystem/core/master/banner.png" />
-</p>
+### 部署教程
 
-[![Build Status](https://badgen.now.sh/github/status/ArkEcosystem/core/master)](https://github.com/ArkEcosystem/core/actions)
-[![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/core)](https://codecov.io/gh/arkecosystem/core)
-[![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
+创建非ROOT用户
+~~~
+adduser tgic
+usermod -a -G sudo tgic
+~~~
+使用tgic用户登录
 
-> Lead Maintainer: [Erwann Gentric](https://github.com/air1one)
+~~~
+bash <(curl -s https://raw.githubusercontent.com/xianfeic/core/chore/bridgechain-changes/install.sh)
+~~~
 
-## Introduction
+最近raw.githubusercontent.com链接不稳定，若链接不上可以使用如下命令
+~~~
+sudo vim /etc/hosts
+~~~
+增加在最后一行 :wq保存
+~~~
+199.232.4.133 raw.githubusercontent.com
+~~~
 
-> This repository contains all plugins that make up the ARK Core.
+安装结束后弹出的对话框选择devnet
+然后Y配置数据库
 
-Check our [dedicated documentation site](https://learn.ark.dev) for information about all available plugins and [How to write a Core Plugin
-](https://learn.ark.dev/application-development/how-to-write-core-dapps) if you want to get started with developing your own plugins.
+~~~
+Would you like to configure the database? [y/N]: y
+Enter the database username: tgicdb
+Enter the database password: tgic123456
+Enter the database name: tgichaindb
+database username: tgicdb
+database password: tgic123456
+database name: tgichaindb
+Proceed? [y/N]: y
 
-## Documentation
+~~~
 
--   Development : https://learn.ark.dev/core-getting-started/setting-up-your-development-environment
--   Docker : https://guides.ark.dev/devops-guides/how-to-setup-a-node-with-docker
+### 启动中继点
 
-## API Documentation
+~~~
+tgichain relay:start
+~~~
 
--   API v2 : https://api.ark.dev
+### 停止中继点
 
-## GitHub Development Bounty
+~~~
+tgichain relay:stop
+~~~
 
--   Get involved with the development and start earning ARK : https://bounty.ark.io
+### 重启中继节点
 
-## Security
+~~~
+tgichain relay:restart
+~~~
 
-If you discover a security vulnerability within this package, please send an e-mail to security@ark.io. All security vulnerabilities will be promptly addressed.
 
-## Credits
+### 查看日志
 
-This project exists thanks to all the people who [contribute](../../contributors).
+~~~
+pm2 list
 
-## License
+pm2 log  
 
-[MIT](LICENSE) © [ARK Ecosystem](https://ark.io)
+tgichain relay:log
+~~~
+
+# 常见问题：
+
+若安装出现错误  尝试执行
+
+~~~
+git config --global http.postBuffer 524288000
+~~~
+
+然后重新执行bash 命令
+
+若出现无法同步，请打开安全组4102,4103,4104端口
