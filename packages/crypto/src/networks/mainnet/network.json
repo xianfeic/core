@@ -1,18 +1,18 @@
 {
-    "name": "mainnet",
-    "messagePrefix": "ARK message:\n",
-    "bip32": {
-        "public": 46090600,
-        "private": 46089520
-    },
-    "pubKeyHash": 23,
-    "nethash": "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988",
-    "wif": 170,
-    "slip44": 111,
-    "aip20": 0,
-    "client": {
-        "token": "ARK",
-        "symbol": "Ѧ",
-        "explorer": "https://explorer.ark.io"
-    }
+  "name": "mainnet",
+  "messagePrefix": "TGI message:\n",
+  "bip32": {
+    "public": 46090600,
+    "private": 46089520
+  },
+  "pubKeyHash": 50,
+  "nethash": "7479572d7661023fa4098c098716e11607ee9a56cd410f332e6cd1facd2ccf30",
+  "wif": 170,
+  "slip44": 111,
+  "aip20": 0,
+  "client": {
+    "token": "TGI",
+    "symbol": "T",
+    "explorer": "http://0.0.0.0:4200"
+  }
 }
