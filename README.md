@@ -51,6 +51,7 @@ tgichain relay:stop
 
 ### 重启中继节点
 
+
 ~~~
 tgichain relay:restart
 ~~~
